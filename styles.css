@@ -1,0 +1,261 @@
+:root {
+  --bg: #f4f6fa;
+  --text: #1f2937;
+  --card: #ffffff;
+  --accent: #2563eb;
+  --shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+body.dark {
+  --bg: #0f172a;
+  --text: #f1f5f9;
+  --card: #1e293b;
+  --accent: #3b82f6;
+  --shadow: 0 4px 14px rgba(255, 255, 255, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+header.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: var(--card);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header.header h1 {
+  flex: 1;
+  text-align: center;
+  font-size: 1.8rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+header.header .logo {
+  height: 48px;
+  object-fit: contain;
+}
+
+#toggleThemeBtn {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: var(--accent);
+  transition: transform 0.3s ease;
+}
+
+#toggleThemeBtn:hover {
+  transform: scale(1.1);
+}
+
+.app-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--card);
+  box-shadow: var(--shadow);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+  flex: 1 1 400px;
+  max-width: 640px;
+  width: 100%;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* Camera & Canvas */
+.camera-card video,
+.camera-card canvas {
+  width: 100%;
+  border-radius: 12px;
+  border: 2px solid #ccc;
+  margin-bottom: 1rem;
+}
+
+#gesture-label {
+  font-size: 1.25rem;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+#ghost-label {
+  text-align: center;
+  font-style: italic;
+  opacity: 0.6;
+  font-size: 0.9rem;
+}
+
+/* Input and Buttons */
+input[type="text"], input[type="file"] {
+  width: 100%;
+  max-width: 300px;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin: 0.5rem 0;
+  background-color: white;
+}
+
+body.dark input[type="text"],
+body.dark input[type="file"] {
+  background: #334155;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+button {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  margin: 0.4rem 0.3rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+  transform: scale(1.05);
+}
+
+/* Sentence Bubble Section */
+#sentence-container {
+  background: var(--card);
+  box-shadow: var(--shadow);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+#sentence-bubbles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.bubble {
+  background-color: var(--accent);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease-in-out;
+}
+.sentence-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* History and Gesture List */
+#history, #savedGesturesList {
+  background: var(--card);
+  box-shadow: var(--shadow);
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem auto;
+  width: 95%;
+  max-width: 800px;
+  font-size: 1rem;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+.toast.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .header {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  input[type="text"], input[type="file"] {
+    width: 100%;
+  }
+
+  .bubble {
+    font-size: 0.9rem;
+  }
+
+  #sentence-container,
+  #history,
+  #savedGesturesList {
+    width: 100%;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}
